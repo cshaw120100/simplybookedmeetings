@@ -21,19 +21,14 @@ simplybookedmeetings/
 From this folder:
 
 ```bash
-npm run preview
+npm install
+npm run dev
 ```
 
 Then open:
 
 ```text
-http://localhost:5173
-```
-
-You can also preview without npm:
-
-```bash
-python3 -m http.server 5173
+http://127.0.0.1:5173
 ```
 
 ## Customize Before Launch
@@ -63,10 +58,10 @@ If this will live inside a larger app repository later, put this landing page at
 1. Go to the Vercel dashboard and choose **New Project**.
 2. Import the GitHub repository.
 3. Use these settings:
-   - Framework Preset: **Other**
+   - Framework Preset: **Vite**
    - Root Directory: this folder, if it is inside a larger repo
-   - Build Command: leave empty
-   - Output Directory: leave empty
+   - Build Command: `npm run build`
+   - Output Directory: `dist`
 4. Click **Deploy**.
 
 After that, every push to `main` creates a production deployment, and other branches get preview deployments.
