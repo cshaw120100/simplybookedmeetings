@@ -10,6 +10,7 @@ export default defineConfig({
       input: {
         main: resolve(rootDir, "index.html"),
         groupleads: resolve(rootDir, "groupleads.html"),
+        agentrecruitment: resolve(rootDir, "agentrecruitment.html"),
       },
     },
   },

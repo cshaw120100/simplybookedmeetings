@@ -9,6 +9,14 @@
     {
       "source": "/groupleads/",
       "destination": "/groupleads.html"
+    },
+    {
+      "source": "/agentrecruitment",
+      "destination": "/agentrecruitment.html"
+    },
+    {
+      "source": "/agentrecruitment/",
+      "destination": "/agentrecruitment.html"
     }
   ]
 }
