@@ -1,4 +1,14 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "cleanUrls": true
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/groupleads",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/groupleads/",
+      "destination": "/index.html"
+    }
+  ]
 }
