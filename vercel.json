@@ -4,11 +4,11 @@
   "rewrites": [
     {
       "source": "/groupleads",
-      "destination": "/index.html"
+      "destination": "/groupleads.html"
     },
     {
       "source": "/groupleads/",
-      "destination": "/index.html"
+      "destination": "/groupleads.html"
     }
   ]
 }

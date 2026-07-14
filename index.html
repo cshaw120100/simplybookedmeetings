@@ -3,564 +3,1025 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="SimplyBooked delivers qualified group benefits lead conversations from small businesses to insurance agencies and benefits brokers."
-    />
-    <title>SimplyBooked | Qualified Group Benefits Lead Conversations</title>
-    <link rel="icon" href="/public/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="/src/styles.css" />
+    <title>SimplyBooked | Outbound Growth Systems</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #101a2c;
+        --muted: #657184;
+        --line: #dce8f6;
+        --paper: #fbfdff;
+        --panel: #ffffff;
+        --wash: #f4f8ff;
+        --blue: #2477e8;
+        --navy: #0d3d8f;
+        --lime: #bde3ff;
+        --mint: #e8f4ff;
+        --gold: #fff4d6;
+        --green: #1f9d55;
+        --shadow: 0 22px 60px rgba(24, 72, 132, 0.13);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        line-height: 1.5;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .site-header {
+        position: fixed;
+        inset: 0 0 auto;
+        z-index: 20;
+        display: grid;
+        grid-template-columns: auto 1fr auto auto;
+        align-items: center;
+        gap: 22px;
+        min-height: 76px;
+        padding: 16px clamp(18px, 5vw, 64px);
+        background: rgba(251, 253, 255, 0.88);
+        border-bottom: 1px solid rgba(220, 232, 246, 0.85);
+        backdrop-filter: blur(18px);
+      }
+
+      .brand,
+      .header-actions,
+      .desktop-nav,
+      .hero-actions,
+      .product-actions,
+      .inline-stat,
+      .flow-card,
+      .metric-card {
+        display: flex;
+        align-items: center;
+      }
+
+      .brand {
+        gap: 10px;
+        font-weight: 950;
+      }
+
+      .brand-mark {
+        display: grid;
+        place-items: center;
+        width: 36px;
+        aspect-ratio: 1;
+        border-radius: 8px;
+        background: var(--navy);
+        color: #fff;
+      }
+
+      .desktop-nav {
+        justify-self: center;
+        gap: 24px;
+        color: var(--muted);
+        font-size: 0.95rem;
+        font-weight: 750;
+      }
+
+      .desktop-nav a:hover {
+        color: var(--blue);
+      }
+
+      .header-actions {
+        justify-content: end;
+        gap: 10px;
+      }
+
+      .button,
+      .portal-cta,
+      .header-cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: 0 18px;
+        border: 1px solid transparent;
+        border-radius: 8px;
+        font-weight: 900;
+        white-space: nowrap;
+      }
+
+      .header-cta,
+      .button.primary {
+        background: var(--navy);
+        color: #fff;
+        box-shadow: 0 12px 26px rgba(13, 61, 143, 0.2);
+      }
+
+      .portal-cta,
+      .button.secondary {
+        border-color: var(--line);
+        background: rgba(255, 255, 255, 0.82);
+        color: var(--navy);
+      }
+
+      .menu-toggle {
+        display: none;
+        width: 44px;
+        aspect-ratio: 1;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+        place-items: center;
+        gap: 4px;
+      }
+
+      .menu-toggle span {
+        width: 18px;
+        height: 2px;
+        background: var(--ink);
+      }
+
+      .mobile-menu {
+        position: fixed;
+        inset: 76px 16px auto;
+        z-index: 19;
+        display: none;
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 12px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.98);
+        box-shadow: var(--shadow);
+      }
+
+      .mobile-menu a {
+        padding: 14px;
+        border-radius: 8px;
+        color: var(--muted);
+        font-weight: 850;
+      }
+
+      .mobile-menu.is-open {
+        display: grid;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 0.96fr) minmax(390px, 0.78fr);
+        gap: clamp(34px, 6vw, 82px);
+        align-items: center;
+        min-height: 94vh;
+        padding: 138px clamp(18px, 5vw, 64px) 64px;
+        overflow: hidden;
+        background:
+          linear-gradient(90deg, rgba(36, 119, 232, 0.04) 1px, transparent 1px),
+          linear-gradient(180deg, rgba(36, 119, 232, 0.04) 1px, transparent 1px),
+          radial-gradient(circle at 16% 18%, rgba(189, 227, 255, 0.7), transparent 24rem),
+          var(--paper);
+        background-size:
+          128px 128px,
+          128px 128px,
+          auto,
+          auto;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        min-height: 34px;
+        margin: 0 0 18px;
+        padding: 0 14px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.72);
+        color: var(--blue);
+        font-size: 0.78rem;
+        font-weight: 950;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        max-width: 920px;
+        margin-bottom: 22px;
+        font-size: clamp(4.1rem, 8.2vw, 7.8rem);
+        line-height: 0.93;
+        letter-spacing: 0;
+      }
+
+      h2 {
+        margin-bottom: 18px;
+        font-size: clamp(2.6rem, 5.2vw, 5.2rem);
+        line-height: 0.95;
+        letter-spacing: 0;
+      }
+
+      h3 {
+        margin-bottom: 10px;
+        font-size: clamp(1.45rem, 2.6vw, 2.2rem);
+        line-height: 1.05;
+      }
+
+      .hero-copy {
+        max-width: 720px;
+        margin-bottom: 28px;
+        color: var(--muted);
+        font-size: clamp(1.08rem, 1.7vw, 1.35rem);
+        font-weight: 600;
+      }
+
+      .hero-actions {
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 26px;
+      }
+
+      .hero-points,
+      .section {
+        display: grid;
+      }
+
+      .hero-points {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+        max-width: 880px;
+      }
+
+      .hero-points span,
+      .card,
+      .product-card,
+      .dashboard-panel,
+      .flow-card,
+      .metric-card {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.82);
+      }
+
+      .hero-points span {
+        padding: 13px 14px;
+        color: #3d4b60;
+        font-size: 0.9rem;
+        font-weight: 850;
+      }
+
+      .dashboard-panel {
+        padding: 18px;
+        background: rgba(255, 255, 255, 0.88);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(18px);
+      }
+
+      .panel-topline,
+      .mini-window-top,
+      .product-card-top,
+      .section-heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+      }
+
+      .panel-topline {
+        margin-bottom: 18px;
+        color: var(--muted);
+        font-size: 0.82rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .panel-topline strong {
+        color: var(--green);
+      }
+
+      .metric-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .metric-card {
+        align-items: flex-start;
+        flex-direction: column;
+        min-height: 112px;
+        padding: 18px;
+      }
+
+      .metric-card span {
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-weight: 900;
+      }
+
+      .metric-card strong {
+        margin-top: 4px;
+        color: var(--ink);
+        font-size: clamp(1.8rem, 3.8vw, 3.2rem);
+        line-height: 1;
+      }
+
+      .split-pipeline {
+        display: grid;
+        gap: 12px;
+        margin-top: 14px;
+      }
+
+      .pipeline-lane {
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--wash);
+      }
+
+      .pipeline-lane h3 {
+        margin-bottom: 16px;
+        font-size: 1.06rem;
+        color: var(--blue);
+      }
+
+      .lane-bar {
+        display: grid;
+        grid-template-columns: 0.75fr 1fr 0.62fr;
+        gap: 8px;
+      }
+
+      .lane-bar span {
+        display: grid;
+        align-content: center;
+        min-height: 58px;
+        padding: 10px 12px;
+        border-radius: 8px;
+        background: #fff;
+        border: 1px solid var(--line);
+        color: #3d4b60;
+        font-size: 0.82rem;
+        font-weight: 900;
+        line-height: 1.15;
+      }
+
+      .lane-bar span:nth-child(2) {
+        background: var(--mint);
+      }
+
+      .lane-bar small {
+        display: block;
+        margin-top: 3px;
+        color: var(--muted);
+        font-size: 0.68rem;
+        font-weight: 750;
+      }
+
+      .section {
+        padding: clamp(72px, 10vw, 118px) clamp(18px, 5vw, 64px);
+      }
+
+      .section-heading {
+        margin-bottom: 34px;
+      }
+
+      .section-heading > div {
+        max-width: 780px;
+      }
+
+      .section-heading p:not(.eyebrow) {
+        color: var(--muted);
+        font-size: 1.08rem;
+      }
+
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .product-card {
+        position: relative;
+        overflow: hidden;
+        min-height: 520px;
+        padding: clamp(26px, 4vw, 42px);
+        background:
+          linear-gradient(135deg, rgba(232, 244, 255, 0.82), rgba(255, 255, 255, 0.9)),
+          #fff;
+        box-shadow: 0 16px 48px rgba(24, 72, 132, 0.09);
+      }
+
+      .product-card.featured {
+        background:
+          radial-gradient(circle at 20% 12%, rgba(189, 227, 255, 0.75), transparent 18rem),
+          #fff;
+      }
+
+      .product-card-top {
+        margin-bottom: 54px;
+      }
+
+      .product-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 54px;
+        aspect-ratio: 1;
+        border-radius: 8px;
+        background: var(--navy);
+        color: #fff;
+        font-weight: 950;
+      }
+
+      .status-pill {
+        padding: 8px 12px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--mint);
+        color: var(--navy);
+        font-size: 0.82rem;
+        font-weight: 900;
+      }
+
+      .product-card p {
+        max-width: 560px;
+        color: var(--muted);
+        font-size: 1.08rem;
+      }
+
+      .product-card ul {
+        display: grid;
+        gap: 12px;
+        margin: 28px 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .product-card li {
+        position: relative;
+        padding-left: 26px;
+        color: #3d4b60;
+        font-weight: 750;
+      }
+
+      .product-card li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.55em;
+        width: 9px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: var(--blue);
+        box-shadow: 0 0 0 4px rgba(36, 119, 232, 0.12);
+      }
+
+      .product-actions {
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .overview-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .overview-card {
+        min-height: 250px;
+        padding: 28px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+        box-shadow: 0 16px 48px rgba(24, 72, 132, 0.07);
+      }
+
+      .overview-card span {
+        display: grid;
+        place-items: center;
+        width: 42px;
+        aspect-ratio: 1;
+        margin-bottom: 44px;
+        border-radius: 8px;
+        background: var(--mint);
+        color: var(--navy);
+        font-weight: 950;
+      }
+
+      .overview-card h3 {
+        font-size: 1.45rem;
+      }
+
+      .overview-card p {
+        color: var(--muted);
+      }
+
+      .choice-grid .product-card {
+        min-height: 430px;
+      }
+
+      .path-intro {
+        display: grid;
+        grid-template-columns: minmax(0, 0.72fr) minmax(320px, 0.45fr);
+        gap: 18px;
+        align-items: stretch;
+        margin-bottom: 18px;
+      }
+
+      .path-panel {
+        padding: clamp(26px, 4vw, 42px);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background:
+          radial-gradient(circle at 14% 18%, rgba(189, 227, 255, 0.64), transparent 18rem),
+          #fff;
+        box-shadow: 0 16px 48px rgba(24, 72, 132, 0.08);
+      }
+
+      .path-panel h2 {
+        max-width: 820px;
+        margin-bottom: 14px;
+      }
+
+      .path-panel p {
+        max-width: 720px;
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 1.1rem;
+      }
+
+      .path-rank {
+        display: grid;
+        gap: 10px;
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--wash);
+      }
+
+      .path-rank div {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 12px;
+        align-items: center;
+        min-height: 72px;
+        padding: 12px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+      }
+
+      .path-rank span {
+        display: grid;
+        place-items: center;
+        width: 38px;
+        aspect-ratio: 1;
+        border-radius: 8px;
+        background: var(--navy);
+        color: #fff;
+        font-weight: 950;
+      }
+
+      .path-rank strong {
+        display: block;
+        color: var(--ink);
+        font-size: 1rem;
+      }
+
+      .path-rank small {
+        display: block;
+        margin-top: 2px;
+        color: var(--muted);
+        font-weight: 750;
+      }
+
+      .flow-section {
+        background:
+          radial-gradient(circle at 18% 24%, rgba(189, 227, 255, 0.5), transparent 22rem),
+          var(--wash);
+      }
+
+      .flow-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .flow-card {
+        align-items: flex-start;
+        flex-direction: column;
+        min-height: 250px;
+        padding: 26px;
+        background: #fff;
+      }
+
+      .flow-card span {
+        display: grid;
+        place-items: center;
+        width: 42px;
+        aspect-ratio: 1;
+        margin-bottom: 44px;
+        border-radius: 8px;
+        background: var(--mint);
+        color: var(--navy);
+        font-weight: 950;
+      }
+
+      .flow-card h3 {
+        font-size: 1.35rem;
+      }
+
+      .flow-card p {
+        color: var(--muted);
+      }
+
+      .why-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .card {
+        min-height: 246px;
+        padding: 28px;
+        background: #fff;
+      }
+
+      .card h3 {
+        font-size: 1.45rem;
+      }
+
+      .card p {
+        color: var(--muted);
+      }
+
+      .cta-strip {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 28px;
+        align-items: center;
+        padding: clamp(42px, 6vw, 64px) clamp(18px, 5vw, 64px);
+        background:
+          radial-gradient(circle at 16% 50%, rgba(109, 183, 255, 0.22), transparent 22rem),
+          linear-gradient(135deg, #0d3d8f, #155ac7 58%, #2477e8);
+        color: #fff;
+      }
+
+      .cta-strip .eyebrow {
+        border-color: rgba(255, 255, 255, 0.18);
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--lime);
+      }
+
+      .cta-strip h2 {
+        max-width: 850px;
+        margin-bottom: 12px;
+      }
+
+      .cta-strip p {
+        max-width: 760px;
+        margin-bottom: 0;
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 1.08rem;
+      }
+
+      .cta-strip .button {
+        min-height: 56px;
+        background: #fff;
+        color: var(--navy);
+      }
+
+      .site-footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 28px clamp(18px, 5vw, 64px);
+        color: var(--muted);
+        background: #fff;
+      }
+
+      .site-footer span:first-child {
+        color: var(--ink);
+        font-weight: 950;
+      }
+
+      @media (max-width: 980px) {
+        .site-header {
+          grid-template-columns: auto 1fr auto;
+        }
+
+        .desktop-nav,
+        .header-actions {
+          display: none;
+        }
+
+        .menu-toggle {
+          display: grid;
+          justify-self: end;
+        }
+
+        .hero,
+        .path-intro,
+        .product-grid,
+        .overview-grid,
+        .flow-grid,
+        .why-grid,
+        .cta-strip {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          min-height: auto;
+          padding-top: 118px;
+        }
+
+        .cta-strip .button {
+          justify-self: start;
+        }
+      }
+
+      @media (max-width: 620px) {
+        .site-header {
+          min-height: 68px;
+          padding: 12px 16px;
+        }
+
+        .mobile-menu {
+          inset: 68px 12px auto;
+        }
+
+        .hero {
+          padding: 104px 16px 42px;
+        }
+
+        h1 {
+          font-size: clamp(3rem, 15vw, 4.5rem);
+        }
+
+        h2 {
+          font-size: clamp(2.15rem, 10vw, 3.5rem);
+        }
+
+        .hero-actions,
+        .button,
+        .hero-points {
+          width: 100%;
+        }
+
+        .hero-points,
+        .overview-grid,
+        .metric-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .section,
+        .cta-strip,
+        .site-footer {
+          padding-inline: 16px;
+        }
+
+        .product-card {
+          min-height: auto;
+        }
+      }
+    </style>
   </head>
   <body>
-    <header class="site-header" data-elevated="false">
-      <a class="brand" href="/groupleads#top" aria-label="SimplyBooked home">
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="SimplyBooked home">
         <span class="brand-mark" aria-hidden="true">S</span>
         <span>SimplyBooked</span>
       </a>
       <nav class="desktop-nav" aria-label="Primary navigation">
-        <a href="/groupleads#lead">Lead Example</a>
-        <a href="/groupleads#process">How It Works</a>
-        <a href="/groupleads#included">Included</a>
-        <a href="/groupleads#pricing">Pricing</a>
-        <a href="/groupleads#faq">FAQ</a>
+        <a href="#services">Services</a>
+        <a href="#choose">Choose a Path</a>
+        <a href="#contact">Book a Call</a>
       </nav>
       <div class="header-actions">
         <a class="portal-cta" href="/client-portal">Client Portal</a>
-        <a class="header-cta" href="/groupleads#contact">Book a call</a>
+        <a class="header-cta" href="#contact">Book a call</a>
       </div>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">
-        <span class="sr-only">Open menu</span>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
         <span></span>
         <span></span>
       </button>
     </header>
 
-    <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
-      <a href="/groupleads#lead">Lead Example</a>
-      <a href="/groupleads#process">How It Works</a>
-      <a href="/groupleads#included">Included</a>
-      <a href="/groupleads#pricing">Pricing</a>
-      <a href="/groupleads#faq">FAQ</a>
+    <nav class="mobile-menu" aria-label="Mobile navigation">
+      <a href="#services">Services</a>
+      <a href="#choose">Choose a Path</a>
       <a href="/client-portal">Client Portal</a>
-      <a href="/groupleads#contact">Book a call</a>
+      <a href="#contact">Book a Call</a>
     </nav>
 
     <main id="top">
       <section class="hero">
-        <div class="hero-content">
-          <p class="eyebrow">Group benefits lead generation</p>
-          <h1>Qualified group benefits leads for insurance agencies.</h1>
+        <div>
+          <p class="eyebrow">SimplyBooked</p>
+          <h1>Outbound services for insurance agencies.</h1>
           <p class="hero-copy">
-            SimplyBooked helps insurance agencies reach local small businesses, verify contacts, run outbound email campaigns, and deliver positive reply conversations from companies interested in reviewing employee benefits options.
+            We help insurance agencies reach the right people through targeted outbound
+            campaigns, reply filtering, and clean handoff workflows. Start with the path
+            that fits what you want to grow next.
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="/groupleads#contact">Book a call</a>
-            <a class="button secondary" href="/groupleads#lead">See a lead example</a>
+            <a class="button primary" href="#choose">Choose your path</a>
+            <a class="button secondary" href="#services">View services</a>
           </div>
-          <div class="hero-points" aria-label="Offer highlights">
-            <span>$85 per qualified lead conversation</span>
-            <span>Built for group benefits and small business coverage</span>
-            <span>Delivered by forward, CC intro, or dashboard</span>
+          <div class="hero-points" aria-label="SimplyBooked highlights">
+            <span>Insurance recruitment</span>
+            <span>Group benefits leads</span>
+            <span>Targeted outbound campaigns</span>
           </div>
         </div>
 
-        <div class="hero-media" aria-label="Example lead dashboard">
-          <div class="dashboard-panel">
-            <div class="panel-topline">
-              <span>Campaign monitor</span>
-              <strong>Live</strong>
-            </div>
-            <div class="analytics-grid" aria-label="Example campaign analytics">
-              <article>
-                <span>Contacts verified</span>
-                <strong>4,812</strong>
-                <small>96.4% valid</small>
-              </article>
-              <article>
-                <span>Positive replies</span>
-                <strong>37</strong>
-                <small>AI + human reviewed</small>
-              </article>
-              <article>
-                <span>Qualified rate</span>
-                <strong>18.7%</strong>
-                <small>of reviewed replies</small>
-              </article>
-            </div>
-            <div class="analytics-chart" aria-hidden="true">
-              <span style="height: 42%"></span>
-              <span style="height: 64%"></span>
-              <span style="height: 48%"></span>
-              <span style="height: 76%"></span>
-              <span style="height: 58%"></span>
-              <span style="height: 88%"></span>
-              <span style="height: 72%"></span>
-            </div>
-            <article class="lead-card featured">
-              <div class="lead-card-header">
-                <div>
-                  <p><span class="blurred-text">Green Valley Plumbing</span></p>
-                  <span>Naperville, Illinois</span>
-                </div>
-                <strong>Qualified</strong>
+        <div class="dashboard-panel" aria-label="SimplyBooked dashboard preview">
+          <div class="panel-topline">
+            <span>Service overview</span>
+            <strong>Live</strong>
+          </div>
+          <div class="metric-grid">
+            <article class="metric-card">
+              <span>Path 1</span>
+              <strong>Recruit</strong>
+              <small>licensed agents and producers</small>
+            </article>
+            <article class="metric-card">
+              <span>Path 2</span>
+              <strong>Leads</strong>
+              <small>small business group benefits</small>
+            </article>
+            <article class="metric-card">
+              <span>Campaign layer</span>
+              <strong>Outbound</strong>
+              <small>targeting, verification, launch</small>
+            </article>
+            <article class="metric-card">
+              <span>Delivery layer</span>
+              <strong>Handoff</strong>
+              <small>forward, CC intro, or dashboard</small>
+            </article>
+          </div>
+          <div class="split-pipeline">
+            <div class="pipeline-lane">
+              <h3>Insurance Recruitment</h3>
+              <div class="lane-bar">
+                <span>Target agents<small>Licensed producers by market</small></span>
+                <span>Filter interest<small>Replies reviewed for fit</small></span>
+                <span>Deliver candidates<small>Context for follow-up</small></span>
               </div>
-              <dl>
-                <div>
-                  <dt>Contact</dt>
-                  <dd><span class="blurred-text">info@greenvalleyplumbing.com</span></dd>
-                </div>
-                <div>
-                  <dt>Industry</dt>
-                  <dd>Plumbing / Home Services</dd>
-                </div>
-                <div>
-                  <dt>Reply</dt>
-                  <dd>“Sure, send me more information. We’ve been looking at options for our guys.”</dd>
-                </div>
-              </dl>
-            </article>
-            <div class="pipeline-mini" aria-hidden="true">
-              <span>Sent</span>
-              <span>Replied</span>
-              <span>Qualified</span>
-              <span>Delivered</span>
+            </div>
+            <div class="pipeline-lane">
+              <h3>Group Leads</h3>
+              <div class="lane-bar">
+                <span>Target businesses<small>Local small business lists</small></span>
+                <span>Find interest<small>Replies from benefits prospects</small></span>
+                <span>Deliver leads<small>Forward, CC, or dashboard</small></span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="signal-section" aria-label="Why SimplyBooked is different">
-        <div class="signal-copy">
-          <p class="eyebrow">The difference</p>
-          <h2>Not a list. Not a shared form fill. A verified reply conversation.</h2>
-          <p>
-            We filter out the noise before it reaches your agency. Bounces, auto-replies, unsubscribes, rejections, and raw contact rows do not become billable leads.
-          </p>
-        </div>
-        <div class="signal-panel">
-          <div class="exclusive-badge">
-            <span></span>
-            Not shared or resold
-          </div>
-          <div class="signal-stats">
-            <article>
-              <strong>2-49</strong>
-              <span>employee targets</span>
-            </article>
-            <article>
-              <strong>$85</strong>
-              <span>qualified conversation</span>
-            </article>
-            <article>
-              <strong>0</strong>
-              <span>shared lead lists</span>
-            </article>
-          </div>
-          <div class="signal-flow" aria-hidden="true">
-            <span>Verified contact</span>
-            <span>Positive reply</span>
-            <span>Human reviewed</span>
-            <span>Delivered</span>
-          </div>
-        </div>
-      </section>
-
-      <section class="section lead-showcase" id="lead">
+      <section class="section" id="services">
         <div class="section-heading">
-          <p class="eyebrow">What a lead looks like</p>
-          <h2>A lead should feel like a real conversation, not a form fill.</h2>
+          <div>
+            <p class="eyebrow">Overview</p>
+            <h2>One outbound system, two services.</h2>
+            <p>
+              The backend process is similar for both offers. We help define the audience,
+              launch targeted outreach, review replies, and deliver useful conversations
+              to your team.
+            </p>
+          </div>
         </div>
-        <div class="showcase-grid">
-          <article class="lead-card">
-            <div class="lead-card-header">
-              <div>
-                <p><span class="blurred-text">Green Valley Plumbing</span></p>
-                <span>Naperville, Illinois</span>
-              </div>
-              <strong>Ready</strong>
-            </div>
-            <dl>
-              <div>
-                <dt>Company Size</dt>
-                <dd>Estimated 2-49 employees</dd>
-              </div>
-              <div>
-                <dt>Campaign</dt>
-                <dd>Illinois Small Business Group Benefits</dd>
-              </div>
-              <div>
-                <dt>Delivery</dt>
-                <dd>Forwarded to client or CC intro sent</dd>
-              </div>
-            </dl>
+        <div class="overview-grid">
+          <article class="overview-card">
+            <span>01</span>
+            <h3>Target the right audience</h3>
+            <p>Build campaigns around the exact market you want to reach, whether that is agents, producers, or small businesses.</p>
           </article>
-          <article class="reply-card">
-            <span>Positive reply</span>
-            <p>“Sure, send me more information. We’ve been looking at options for our guys.”</p>
-            <small>Interested in reviewing health benefits. Likely owner or office manager responding from company inbox.</small>
+          <article class="overview-card">
+            <span>02</span>
+            <h3>Filter replies before handoff</h3>
+            <p>Separate real interest from bounces, rejections, auto-replies, and no-intent responses before they reach your team.</p>
+          </article>
+          <article class="overview-card">
+            <span>03</span>
+            <h3>Deliver clean conversations</h3>
+            <p>Hand off useful replies with context so your team can follow up quickly without sorting through messy activity.</p>
           </article>
         </div>
       </section>
 
-      <section class="section services" id="process">
-        <div class="section-heading">
-          <p class="eyebrow">How it works</p>
-          <h2>Targeted outbound, verified contacts, qualified replies.</h2>
-        </div>
-        <div class="service-grid">
-          <article class="card">
-            <span class="card-icon">01</span>
-            <h3>Build targeted business lists</h3>
-            <p>Source local businesses by state, city, industry, and business type, including Google Maps-style local business data.</p>
-          </article>
-          <article class="card">
-            <span class="card-icon">02</span>
-            <h3>Launch personalized campaigns</h3>
-            <p>Verify emails, segment contacts, and send outbound campaigns from warmed sending accounts.</p>
-          </article>
-          <article class="card">
-            <span class="card-icon">03</span>
-            <h3>Classify every reply</h3>
-            <p>AI and human review separate positive buying intent from bounces, unsubscribes, auto-replies, and rejections.</p>
-          </article>
-          <article class="card">
-            <span class="card-icon">04</span>
-            <h3>Deliver qualified conversations</h3>
-            <p>Positive replies are forwarded, introduced by CC, or tracked inside a client dashboard or pipeline.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section included" id="included">
-        <div class="included-shell">
-          <div class="included-head">
+      <section class="section flow-section" id="choose">
+        <div class="path-intro">
+          <div class="path-panel">
+            <p class="eyebrow">Choose a path</p>
+            <h2>What do you want SimplyBooked to help you with?</h2>
+            <p>
+              If you want producers, start with insurance recruitment. If you want
+              small business conversations for group benefits, start with group leads.
+            </p>
+          </div>
+          <div class="path-rank" aria-label="SimplyBooked service paths">
             <div>
-              <p class="eyebrow">Full service included</p>
-              <h2>One simple lead engine for small group benefits conversations.</h2>
+              <span>01</span>
+              <p>
+                <strong>Insurance Recruitment</strong>
+                <small>Find licensed agents and producer candidates</small>
+              </p>
             </div>
-            <a class="button primary" href="/groupleads#contact">Get started</a>
-          </div>
-          <div class="included-grid">
-            <article>
-              <h3>Campaign execution</h3>
-              <ul>
-                <li>Targeted small business list building by location, industry, and business type.</li>
-                <li>Email verification and campaign segmentation before outreach starts.</li>
-                <li>Personalized outbound copy built around group benefits conversations.</li>
-                <li>Reply monitoring, filtering, and campaign cleanup handled for you.</li>
-              </ul>
-            </article>
-            <article>
-              <h3>Tools and dashboard</h3>
-              <ul>
-                <li>Real-time lead inbox with statuses, notes, and handoff history.</li>
-                <li>Campaign reporting for contacts verified, replies, qualified leads, and delivery.</li>
-                <li>Positive replies forwarded, CC introduced, or tracked in your portal.</li>
-                <li>Clear qualification rules so your team knows why each lead counts.</li>
-              </ul>
-            </article>
-            <article>
-              <h3>Support and quality</h3>
-              <ul>
-                <li>AI and human review before a reply becomes billable.</li>
-                <li>Noise removed: bounces, unsubscribes, rejections, and auto-replies do not count.</li>
-                <li>Target market checks before campaigns go live.</li>
-                <li>Simple volume planning by state, niche, and agency capacity.</li>
-              </ul>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section results" id="pricing">
-        <div class="results-copy">
-          <p class="eyebrow">Pricing</p>
-          <h2>$85 per qualified lead conversation.</h2>
-          <p>
-            You are not paying for raw contacts, scraped rows, opens, clicks, or emails sent. You pay when a real small business contact replies positively and is ready to be handed off.
-          </p>
-        </div>
-        <div class="results-list">
-          <article>
-            <strong>$85</strong>
-            <span>per qualified group benefits lead conversation.</span>
-          </article>
-          <article>
-            <strong>Forward</strong>
-            <span>receive the positive reply thread directly.</span>
-          </article>
-          <article>
-            <strong>CC intro</strong>
-            <span>get looped into the live conversation with context.</span>
-          </article>
-        </div>
-      </section>
-
-      <section class="booking-strip" aria-label="Book a strategy call">
-        <div>
-          <p class="eyebrow">Ready to check availability?</p>
-          <h2>See if your state and target market are open.</h2>
-          <p>Book a quick call to review your agency, target geography, lead volume, and whether SimplyBooked is a fit.</p>
-        </div>
-        <a class="button calendar-button" href="https://calendly.com/simplybookedmeetings/discovery-call" target="_blank" rel="noopener">Book on Calendly</a>
-      </section>
-
-      <section class="section comparison" id="comparison">
-        <div class="section-heading centered">
-          <p class="eyebrow">Price comparison</p>
-          <h2>Cheap leads create work. Qualified conversations create pipeline.</h2>
-          <p>
-            The lowest cost lead is not always the lowest cost opportunity. SimplyBooked is built to remove dead-end contacts before they reach your producers.
-          </p>
-        </div>
-        <div class="comparison-table" role="table" aria-label="Lead vendor comparison">
-          <div class="comparison-row comparison-head" role="row">
-            <span role="columnheader"></span>
-            <span role="columnheader">Raw online insurance leads</span>
-            <span role="columnheader">Large lead marketplaces</span>
-            <span role="columnheader">SimplyBooked</span>
-          </div>
-          <div class="comparison-row" role="row">
-            <strong role="rowheader">Buying model <small>What the price actually covers</small></strong>
-            <span>InsuranceLeads.com gives an example of 10 internet insurance leads for $100.</span>
-            <span>EverQuote says pricing varies by product, lead type, risk profile, territory, and subsidy eligibility.</span>
-            <span><b>$85</b> only when a small business replies with interest in reviewing group benefits options.</span>
-          </div>
-          <div class="comparison-row" role="row">
-            <strong role="rowheader">Lead quality <small>Less sorting, more selling</small></strong>
-            <span>Usually contact details from a consumer or business inquiry.</span>
-            <span>Data leads, calls, quote requests, or transfers depending on product.</span>
-            <span>AI and human-reviewed positive replies with the original conversation context included.</span>
-          </div>
-          <div class="comparison-row" role="row">
-            <strong role="rowheader">Market fit <small>Built for your actual offer</small></strong>
-            <span>Often broad insurance shoppers or internet quote requests.</span>
-            <span>Often auto, home, life, Medicare, or consumer insurance shoppers.</span>
-            <span>Focused on small businesses with estimated 2-49 employees, the sweet spot for small group benefits.</span>
-          </div>
-          <div class="comparison-row" role="row">
-            <strong role="rowheader">Exclusivity <small>No race against other agents</small></strong>
-            <span>Varies by vendor and lead type.</span>
-            <span>Shared distribution is common; exclusive leads may cost more when available.</span>
-            <span><b>Not shared or resold.</b> Your agency is not competing with a pack of other buyers for the same conversation.</span>
-          </div>
-          <div class="comparison-row" role="row">
-            <strong role="rowheader">Handoff <small>So producers can follow up fast</small></strong>
-            <span>Email, CRM, or lead platform.</span>
-            <span>Email, lead management system, or live call transfer.</span>
-            <span>Forwarded reply, CC intro, or client dashboard with notes, status, and campaign source.</span>
-          </div>
-          <div class="comparison-row" role="row">
-            <strong role="rowheader">Wasted spend <small>What does not get billed</small></strong>
-            <span>Bad fit, low intent, or stale leads can still take producer time.</span>
-            <span>Return policies and credit rules vary by vendor and product.</span>
-            <span>Bounces, auto-replies, unsubscribes, rejections, and no-intent replies do <b>not</b> count.</span>
-          </div>
-        </div>
-        <p class="comparison-note">
-          Sources checked: InsuranceLeads.com public example and EverQuote agent FAQ. Larger vendors often do not publish fixed rate cards, so the table avoids unsourced price claims.
-        </p>
-      </section>
-
-      <section class="section process" id="delivery">
-        <div class="section-heading">
-          <p class="eyebrow">Delivery options</p>
-          <h2>Lead handoff that fits how your agency works.</h2>
-        </div>
-        <div class="timeline">
-          <div>
-            <span>Option 1</span>
-            <h3>Forwarded reply</h3>
-            <p>Receive the positive reply thread with business details, campaign context, and qualification notes.</p>
-          </div>
-          <div>
-            <span>Option 2</span>
-            <h3>CC introduction</h3>
-            <p>We introduce your producer directly into the live thread so the conversation can continue naturally.</p>
-          </div>
-          <div>
-            <span>Option 3</span>
-            <h3>Dashboard tracking</h3>
-            <p>Track leads, statuses, campaigns, notes, and delivery history inside a client dashboard or pipeline.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="section portal-preview">
-        <div class="section-heading">
-          <p class="eyebrow">Client portal preview</p>
-          <h2>Every reply, status, and handoff in one clean workspace.</h2>
-        </div>
-        <div class="portal-window">
-          <div class="portal-chrome">
-            <span></span>
-            <span></span>
-            <span></span>
-            <p>simplybookedmeetings.com/client-portal</p>
-          </div>
-          <div class="portal-toolbar">
             <div>
-              <small>Agency workspace</small>
-              <h3><span class="blurred-text">Northstar Benefits</span></h3>
+              <span>02</span>
+              <p>
+                <strong>Group Leads</strong>
+                <small>Create qualified small business lead conversations</small>
+              </p>
             </div>
-            <button type="button">Refresh</button>
-          </div>
-          <div class="portal-metrics">
-            <article>
-              <span>Monthly target</span>
-              <strong>37 / 60</strong>
-              <small>On track</small>
-            </article>
-            <article>
-              <span>Last 30 days</span>
-              <strong>1,842</strong>
-              <small>contacts verified</small>
-            </article>
-            <article>
-              <span>Qualified replies</span>
-              <strong>37</strong>
-              <small>ready for handoff</small>
-            </article>
-            <article>
-              <span>Lead cost</span>
-              <strong>$85</strong>
-              <small>per qualified conversation</small>
-            </article>
-          </div>
-          <div class="portal-tabs">
-            <span>Pipeline</span>
-            <span>Replies</span>
-            <span>Campaigns</span>
-          </div>
-          <div class="kanban-row">
-            <article>
-              <span>Interested</span>
-              <p><span class="blurred-text">Oak Street Dental</span></p>
-              <small>Asked for benefit options</small>
-            </article>
-            <article>
-              <span>Reviewing</span>
-              <p><span class="blurred-text">Metro HVAC Co.</span></p>
-              <small>Requested next steps</small>
-            </article>
-            <article>
-              <span>CC intro</span>
-              <p><span class="blurred-text">BrightPath Therapy</span></p>
-              <small>Producer looped in</small>
-            </article>
-            <article>
-              <span>Delivered</span>
-              <p><span class="blurred-text">Green Valley Plumbing</span></p>
-              <small>Reply thread forwarded</small>
-            </article>
           </div>
         </div>
-      </section>
 
-      <section class="section qualifying">
-        <div>
-          <p class="eyebrow">Qualified means qualified</p>
-          <h2>You only pay when a business replies with interest.</h2>
-        </div>
-        <div class="qualify-grid">
-          <article>
-            <h3>Counts as a lead</h3>
-            <ul>
-              <li>“Sure, send me more info.”</li>
-              <li>“We’re reviewing options now.”</li>
-              <li>“Can you send details?”</li>
-              <li>“Call me tomorrow.”</li>
-            </ul>
+        <div class="product-grid choice-grid">
+          <article class="product-card featured">
+            <div class="product-card-top">
+              <span class="product-badge">01</span>
+              <span class="status-pill">Recruiting</span>
+            </div>
+            <h3>I want to recruit insurance agents.</h3>
+            <p>
+              Use targeted outreach to connect with licensed agents, producers, and
+              candidates who may be open to joining your agency.
+            </p>
+            <div class="product-actions">
+              <a class="button primary" href="/agentrecruitment">Go to Insurance Recruitment</a>
+              <a class="button secondary" href="#contact">Ask about recruiting</a>
+            </div>
           </article>
-          <article>
-            <h3>Does not count</h3>
-            <ul>
-              <li>Bounces and auto-replies</li>
-              <li>Unsubscribes or spam complaints</li>
-              <li>Hostile or clear rejection replies</li>
-              <li>Responses with no buying intent</li>
-            </ul>
+
+          <article class="product-card">
+            <div class="product-card-top">
+              <span class="product-badge">02</span>
+              <span class="status-pill">Group leads</span>
+            </div>
+            <h3>I want more group benefits leads.</h3>
+            <p>
+              Use targeted outreach to create qualified small business reply
+              conversations for group benefits and employee benefits.
+            </p>
+            <div class="product-actions">
+              <a class="button primary" href="/groupleads">Go to Group Leads</a>
+              <a class="button secondary" href="#contact">Ask about leads</a>
+            </div>
           </article>
         </div>
       </section>
 
-      <section class="section feedback">
-        <div class="section-heading">
-          <p class="eyebrow">Representative feedback</p>
-          <h2>What agencies want from a lead partner.</h2>
-        </div>
-        <div class="feedback-grid">
-          <article>
-            <p>“I do not need another spreadsheet of names. I need to know who actually raised their hand and what they said.”</p>
-            <span>Benefits agency owner</span>
-          </article>
-          <article>
-            <p>“The CC intro matters because my producer can pick up the thread without making the prospect repeat everything.”</p>
-            <span>Group health producer</span>
-          </article>
-          <article>
-            <p>“The biggest win is filtering out the noise before it reaches our team. Positive replies are what we care about.”</p>
-            <span>Employee benefits consultant</span>
-          </article>
-        </div>
-      </section>
-
-      <section class="section faq" id="faq">
-        <div class="section-heading">
-          <p class="eyebrow">FAQ</p>
-          <h2>Common questions from agencies.</h2>
-        </div>
-        <div class="faq-grid">
-          <details>
-            <summary>What counts as a lead?</summary>
-            <p>A real reply conversation where a business contact shows interest, curiosity, or openness to reviewing group coverage options.</p>
-          </details>
-          <details>
-            <summary>Do I pay for bounced emails?</summary>
-            <p>No. Bounces, auto-replies, unsubscribes, rejections, and responses without intent do not count as qualified leads.</p>
-          </details>
-          <details>
-            <summary>Can I choose the state or industries?</summary>
-            <p>Yes. Campaigns can be segmented by state, city, industry, business type, and other practical targeting filters.</p>
-          </details>
-          <details>
-            <summary>How are leads delivered?</summary>
-            <p>Positive replies can be forwarded, introduced by CC, or tracked in a client dashboard depending on your preference.</p>
-          </details>
-          <details>
-            <summary>Who is this for?</summary>
-            <p>Insurance agencies, benefits brokers, group health producers, employee benefits consultants, and small group specialists.</p>
-          </details>
-          <details>
-            <summary>Is this for consumer insurance leads?</summary>
-            <p>No. SimplyBooked focuses on small business and group benefits opportunities, not individual consumer insurance leads.</p>
-          </details>
-        </div>
-      </section>
-
-      <section class="section contact" id="contact">
+      <section class="cta-strip" id="contact">
         <div>
           <p class="eyebrow">Next step</p>
-          <h2>See if your state and target market are available.</h2>
+          <h2>Not sure which growth path fits?</h2>
           <p>
-            No forms or back-and-forth. Pick a time that works and we will walk through your target market, qualification rules, and expected lead volume.
+            Book a quick call and we will help you decide whether group leads, agent
+            recruiting, or both make sense for your agency.
           </p>
         </div>
-        <div class="calendar-card">
-          <span>15-20 minute fit check</span>
-          <h3>Book directly on Calendly.</h3>
-          <p>Choose a time, bring your target state or niche, and we’ll confirm whether group benefits lead conversations make sense for your agency.</p>
-          <a class="button primary calendar-button" href="https://calendly.com/simplybookedmeetings/discovery-call" target="_blank" rel="noopener">Open Calendly</a>
-        </div>
+        <a class="button" href="https://calendly.com/simplybookedmeetings/discovery-call" target="_blank" rel="noopener">Book a Discovery Call</a>
       </section>
     </main>
 
     <footer class="site-footer">
       <span>SimplyBooked</span>
-      <span>Qualified group benefits lead conversations</span>
-      <a href="/groupleads#top">Back to top</a>
+      <span>Outbound growth systems for insurance agencies</span>
+      <a href="#top">Back to top</a>
     </footer>
 
-    <script type="module" src="/src/main.js"></script>
+    <script>
+      const menuToggle = document.querySelector(".menu-toggle");
+      const mobileMenu = document.querySelector(".mobile-menu");
+      menuToggle.addEventListener("click", () => {
+        const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+        menuToggle.setAttribute("aria-expanded", String(!isOpen));
+        mobileMenu.classList.toggle("is-open", !isOpen);
+      });
+      mobileMenu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          menuToggle.setAttribute("aria-expanded", "false");
+          mobileMenu.classList.remove("is-open");
+        });
+      });
+    </script>
   </body>
 </html>
