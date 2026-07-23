@@ -864,6 +864,31 @@ h3 {
   font-weight: 950;
 }
 
+.contracting-rate {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  margin: 0 0 18px;
+  padding: 12px;
+  border: 1px solid rgba(36, 119, 232, 0.16);
+  border-radius: 8px;
+  background: rgba(232, 244, 255, 0.72);
+}
+
+.contracting-rate b {
+  color: var(--green-dark);
+  font-size: 1.55rem;
+  line-height: 1;
+}
+
+.contracting-rate span {
+  color: #3d4b60;
+  font-size: 0.78rem;
+  font-weight: 900;
+  line-height: 1.25;
+}
+
 .pricing-tier-card ul {
   display: grid;
   gap: 12px;
