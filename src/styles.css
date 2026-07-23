@@ -1295,10 +1295,22 @@ h3 {
   background: #ffffff;
 }
 
+.agency-proof {
+  background:
+    linear-gradient(90deg, rgba(36, 119, 232, 0.035) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(36, 119, 232, 0.035) 1px, transparent 1px),
+    #ffffff;
+  background-size: 44px 44px;
+}
+
 .feedback-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
+}
+
+.agency-proof-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
 .feedback-grid article {
@@ -1308,16 +1320,30 @@ h3 {
   padding: 26px;
 }
 
+.agency-proof-grid article {
+  min-height: 235px;
+}
+
 .feedback-grid p {
   color: var(--ink);
   font-size: 1.08rem;
   font-weight: 850;
 }
 
+.agency-proof-grid p {
+  font-size: 0.98rem;
+  line-height: 1.45;
+}
+
 .feedback-grid span {
   color: var(--muted);
   font-size: 0.9rem;
   font-weight: 900;
+}
+
+.agency-proof-grid span {
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
 }
 
 .faq-grid {
