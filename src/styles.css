@@ -1310,7 +1310,30 @@ h3 {
 }
 
 .agency-proof-grid {
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(300px, 360px);
+  grid-template-columns: none;
+  gap: 14px;
+  overflow-x: auto;
+  padding: 4px clamp(18px, 5vw, 64px) 18px;
+  margin-inline: calc(clamp(18px, 5vw, 64px) * -1);
+  scroll-padding-inline: clamp(18px, 5vw, 64px);
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.agency-proof-grid::-webkit-scrollbar {
+  height: 10px;
+}
+
+.agency-proof-grid::-webkit-scrollbar-track {
+  background: rgba(220, 232, 246, 0.52);
+  border-radius: 999px;
+}
+
+.agency-proof-grid::-webkit-scrollbar-thumb {
+  background: rgba(36, 119, 232, 0.35);
+  border-radius: 999px;
 }
 
 .feedback-grid article {
@@ -1321,7 +1344,9 @@ h3 {
 }
 
 .agency-proof-grid article {
-  min-height: 235px;
+  min-height: 250px;
+  padding: 24px;
+  scroll-snap-align: start;
 }
 
 .feedback-grid p {
@@ -1331,8 +1356,9 @@ h3 {
 }
 
 .agency-proof-grid p {
-  font-size: 0.98rem;
+  font-size: 0.96rem;
   line-height: 1.45;
+  font-weight: 820;
 }
 
 .feedback-grid span {
@@ -1342,8 +1368,18 @@ h3 {
 }
 
 .agency-proof-grid span {
+  display: block;
   padding-top: 18px;
   border-top: 1px solid var(--line);
+  line-height: 1.35;
+}
+
+.agency-proof-grid span b {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--ink);
+  font-size: 0.96rem;
+  font-weight: 950;
 }
 
 .faq-grid {
@@ -1579,6 +1615,14 @@ h3 {
   .kanban-row,
   .feedback-grid {
     grid-template-columns: 1fr;
+  }
+
+  .agency-proof-grid {
+    grid-auto-columns: minmax(260px, 82vw);
+    grid-template-columns: none;
+    padding-inline: 16px;
+    margin-inline: -16px;
+    scroll-padding-inline: 16px;
   }
 
   .included-head,
