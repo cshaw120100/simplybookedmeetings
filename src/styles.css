@@ -857,6 +857,13 @@ h3 {
   font-size: 1.02rem;
 }
 
+.pricing-tier-card .tier-price-note {
+  margin: -4px 0 16px;
+  color: var(--green-dark);
+  font-size: 0.96rem;
+  font-weight: 950;
+}
+
 .pricing-tier-card ul {
   display: grid;
   gap: 12px;
